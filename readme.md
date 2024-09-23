@@ -29,6 +29,17 @@ Introducing the "Rogue" card, an exciting new addition between the Queen and Jac
 4x4 grid of super magiscule, block font dense intense incredibly meaningful, profound, ethereal, and subtle KANJI characters. The characters are illustrated in super high resolution, partially 3d style, feeling like they almost emerge from the flat screen, in a super clear image utilizing one or more of: subtle coloration, unusual line thicknesses or variations, unusual kerning, pen and ink, hand-drawn custom artisinal creative characters, and/or super evocative, personalized textures.  
 ```
 
+## Gallery
+
+https://photos.app.goo.gl/QJn5xPUNEg1uuNdaA
+
+<img src="https://github.com/user-attachments/assets/f0bc3e11-0f3b-4200-beba-1159fe2fe61a" width="150" alt="image">
+
+<img src="https://github.com/user-attachments/assets/6d4ce05e-6221-4e82-aa72-8f7ea7649a5d" width="150" alt="image">
+
+<img src="https://github.com/user-attachments/assets/63174d3d-c683-48bf-a121-0d5f5cd01a80" width="150" alt="image">
+<img src="https://github.com/user-attachments/assets/f1e8b284-dcfc-41b0-9c8b-747f015a2ba3" width="150" alt="image">
+
 
 ## A bit more detailed run
 
@@ -117,3 +128,4 @@ static async Task Main(string[] args)
     }
 }
  ```
+
