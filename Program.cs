@@ -63,11 +63,13 @@ namespace Dalle3
             myRun.CopiesPer = 1;
             myRun.PromptVariants = new List<string> {
                 //"Please imagine and then describe a beautiful clear photo based on the following subject. Your inspirations are: Tolkien, Medieval french imaginary architects of heaven and eternal realms, Harold Bloom, Brutalist architecture, Cross-cultural art, Shakespeare, Iain M Banks, The Bible, William Blake, Herman Melville, Twitter anon geniuses. Describe the layout, contents, texture, lighting.  Emit just 60 words packed with rich meaning. No newlines in your output, just wonderful prose similar in style to EB White.",
-                "You are an image description creator! I'll give you a brief topic, and your job is to create a detailed and wonderful description of a watercolor of a detailed scene inspired by your imagination triggered by this topic, highlighting incredible lighting and textures, close-ups, and deep emotional resonance with the subject. If there are personalities or emotions in the image, please create one or two short speech bubbles with funny, pithy, ironic, or droll lines emanating from the charactesr. Do not include any newlines in your output - just a prose paragraph with rich, clear descriptions of the image. Remember to note the format and specifics of text you might wish to include.",
-                "Describe an interesting photograph based on the following suggestion by starting out: 'This is a photograph of...' and the continuing to list specific precise interesting details you imagine using your MASSIVE creativity and the inspiration of the greatest minds in the world. No newliens in your output. Utilize specific style and composition words from brilliant street photographers of the 20th century",
-                "Take the following as inspiration and imagine a wondeful new image which tells a clear story, in any format or style, from any era, and describe it in  detail, no newlines in output, for an AI art system to draw for you, including all necessary instructions to that system."
+                "Based on the following suggestion, imagine and describe a realistic photograph of a scene. Also include one or two short speech or thought bubbles from the charactres, with what they are thinking or feeling.",
+                "First, imagine an interesting image based on the topic, then describe it by starting: 'A photograph of...' after picking a specific 20th century artist who is semi-obscure, and describing what you might imagine they would do with this subject, in all their cantankerous, brilliant yet pure creativity.",
+                "Take the following as inspiration and imagine a wondeful new image which tells a clear story, in any format or style, from any era, and describe it in  detail, no newlines in output, for an AI art system to draw for you, including all necessary instructions to that system.",
+                "You take everything EXTREMELY literally. Therefore, take the following prompt, and describe an illustration of it in the most LITERAL way possible, as best as you can.",
+                "Describe a realistic image, of your own creation, taking place in or near an interesting building which embodies and demonstrates the specifics of the following suggestion thoroughly",
         };
-            myRun.PermanentSuffix = " The image is very clear, high resolution, and visually appealing.";
+            myRun.PermanentSuffix = " Output just prose without newlines.";
 
             Console.WriteLine($"Loaded {prompts.Count} Prompts. Starting run: {myRun}");
 
@@ -93,13 +95,13 @@ namespace Dalle3
                 {
                     foreach (var extraText in myRun.PromptVariants)
                     {
-                        var promptForClaudeText = $"{myRun.PermanentPrefix}{extraText} \"{cleanPrompt}\"";
+                        var promptForClaudeText = $"{myRun.PermanentPrefix}{extraText} \"{cleanPrompt}\" {myRun.PermanentSuffix}";
                         var messages = new List<Message>()
                         {
                             new Message(RoleType.User, promptForClaudeText),
                         };
 
-                        var myTemp = (decimal)(random.NextDouble());
+                        var myTemp = 1.0m;
                         var parameters = new MessageParameters()
                         {
                             Messages = messages,
@@ -109,7 +111,7 @@ namespace Dalle3
                             Temperature = myTemp,
                         };
                         var firstResult = await anthropicClient.Messages.GetClaudeMessageAsync(parameters);
-                        var claudesVersionPromptText = firstResult.Message.ToString() + myRun.PermanentSuffix;
+                        var claudesVersionPromptText = firstResult.Message.ToString();
                         Console.WriteLine(claudesVersionPromptText);
                         var annotations = new List<Tuple<string, string>>
                         {
