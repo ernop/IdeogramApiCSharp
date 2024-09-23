@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
 namespace IdeogramAPIClient
 {
-    public class GenerateRequest
+    public class IdeogramGenerateRequest
     {
+        /// <summary>
+        /// The prompt which is actually used on ideogram.
+        /// </summary>
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
 
@@ -50,5 +54,11 @@ namespace IdeogramAPIClient
 
         [JsonProperty("negative_prompt")]
         public string NegativePrompt { get; set; }
+
+        /// <summary>
+        /// If included, and if the client has been set up to save annotated versions of the images, here are keyvalue pairs to draw into the output.
+        /// I use it to log how the prompt was prepared.
+        /// </summary>
+        public List<Tuple<string,string>> AnnotationTexts { get; set; } = new List<Tuple<string,string>>();
     }
 }
