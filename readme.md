@@ -19,7 +19,7 @@ There is a sample settings file in the repo but the name doesn't match. Copy tha
 The client is super simple, and only covers Generate so far.  You can incorporate it directly. The client has options which imply it will do more than just generate images, like download them, create annotated versions etc.
 
 ## Prompts.txt
-```
+```text
 
 The streets of Singapore are bustling with people and various street food stalls, creating a lively and multicultural atmosphere. The area is full of guava, cheese, broccoli, kimchi, hardboiled eggs, vinegar, and durian. Each smell seems to waft through the crowd attacking people and animals who are particularly weak to it, striking them with brutal overwhelming negative sensations. This is a biological weapon attack! the image is a schema overhead view with detailed performance analysis
 A light switch that is clearly in the "ON" not "OFF" position. Please describe this close-up 3d depth image in high detail exactly describing the light switch panel and its material and color, the switch which sticks out, its position and what the position represents.
@@ -33,7 +33,7 @@ Introducing the "Rogue" card, an exciting new addition between the Queen and Jac
 ## A bit more detailed run
 
 
-```
+```c#
 static async Task Main(string[] args)
 {
     var settingsFilePath = "ideogram-settings.json";
